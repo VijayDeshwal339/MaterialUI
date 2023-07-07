@@ -1,18 +1,17 @@
-import React from "react";
-import './Navigation.css';
 import { Link } from "react-router-dom";
+import "./Navigation.css";
 
 const Navigation = (props) => {
-  const isLoggedIn = props.isLoggedIn;
-  const setIsLoggedIn = props.setIsLoggedIn;
-  console.log(isLoggedIn);
+  let isLoggedIn = props.isLoggedIn;
+  let setIsLoggedIn = props.setIsLoggedIn;
+
   return (
     <nav
       className="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-bottom-dark"
       data-bs-theme="dark"
     >
       <div className="container-fluid">
-        <h2>NavBar</h2>
+        <h2>Navbar</h2>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -27,7 +26,6 @@ const Navigation = (props) => {
                 </Link>
               </li>
             )}
-
             {!isLoggedIn && (
               <li className="nav-item">
                 <Link className="nav-link active" to="/login">
@@ -35,23 +33,22 @@ const Navigation = (props) => {
                 </Link>
               </li>
             )}
-
             {isLoggedIn && (
               <li className="nav-item">
-                <link className="nav-link active" to="/user/dashboard">
-                  dashboard
-                </link>
+                <Link className="nav-link active" to="/user/dashboard">
+                  Dashboard
+                </Link>
               </li>
             )}
             {isLoggedIn && (
-              <li className="nav-tem">
-                <link
+              <li className="nav-item">
+                <Link
                   className="nav-link active"
                   to="/"
                   onClick={() => setIsLoggedIn(false)}
                 >
                   Logout
-                </link>
+                </Link>
               </li>
             )}
           </ul>
